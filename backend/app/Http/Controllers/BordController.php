@@ -16,7 +16,7 @@ class BordController extends Controller
      */
     public function index(User $user)
     {
-        return Bord::where('user_id', $user->id)->paginate(20);
+        return Bord::where('user_id', $user->id)->paginate(5);
     }
 
     /**

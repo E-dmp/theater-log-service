@@ -22,17 +22,22 @@ class BordTest extends TestCase
        public function setUp(): void
     {
         parent::setUp();
-
         $user = User::factory()->create(['id' => 1]);
-        Bord::factory()->count(21)->for($user)->create();
+        $bords = Bord::factory()->count(10)->for($user)->create();
+        // dd($bords);
     }
     public function test_5_items_in_one_page()
     {
-        $response = $this->get('/api/v1/users/1/bords');
-        // $response->dump();
+
+        // json
+        $response = $this->getJson('/api/v1/users/1/bords');
+        
+        $response->dump();
+        // $response->assertStatus(200);
         $response->assertJson(
             fn (AssertableJson $json) =>
-            $json->has('data', 20)
+            $json->has('data',5)->etc()
         );
     }
+    
 }

@@ -39,7 +39,7 @@ jobs:
         if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --no-interaction --prefer-dist
       - name: Generate APP_KEY
-        run: php artisan key:generate --env=testing        
+        run: php artisan key:generate        
       - name: Execute tests      
         env:
           DB_HOST: 127.0.0.1

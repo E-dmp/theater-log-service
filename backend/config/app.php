@@ -1,6 +1,9 @@
 <?php
 
+
+
 return [
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -12,6 +15,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
+    
 
     'name' => env('APP_NAME', 'Laravel'),
 
@@ -172,8 +176,10 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
 
     ],
 

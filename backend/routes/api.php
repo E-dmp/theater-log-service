@@ -15,3 +15,7 @@ Route::group([
 ], function () {
     Route::apiResource('users.bords', BordController::class);
 });
+
+Route::middleware('auth:sanctum')
+    ->apiResource('users.bords', BordController::class)
+    ->only('store');

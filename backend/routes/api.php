@@ -13,9 +13,11 @@ Route::group([
     'namespace' => 'App\Http\Controllers',
     'prefix' => 'v1',
 ], function () {
-    Route::apiResource('users.bords', BordController::class);
+    Route::apiResource('bords', BordController::class);
 });
 
-Route::middleware('auth:sanctum')
-    ->apiResource('users.bords', BordController::class)
-    ->only('store');
+
+// ログイン状態じゃないとroute list の起動不可
+// Route::middleware('auth:sanctum')
+//     ->apiResource('users.bords', BordController::class)
+//     ->only('store');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\StoreBordRequest;
 use App\Http\Requests\UpdateBordRequest;
 use App\Models\Bord;
@@ -16,7 +17,7 @@ class BordController extends Controller
      */
     public function index(User $user)
     {
-        return Bord::where('user_id', $user->id)->paginate(5);
+        return Bord::all();
     }
 
     /**

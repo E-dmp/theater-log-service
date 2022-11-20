@@ -19,6 +19,6 @@ class BordSeeder extends Seeder
     $user = User::factory()->create();
 
     // 'User'に属するデータを10件生成
-    Bord::factory()->count(5)->for($user)->create();
+    Bord::factory()->count(1)->for($user)->create();
     }
 }

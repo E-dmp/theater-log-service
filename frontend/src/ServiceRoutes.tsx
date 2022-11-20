@@ -8,6 +8,7 @@ const ServiceRoutes = () => {
       <Route path={`/`} element={<Top />} />
       <Route path={'*'} element={<NotFound />} />
     </Routes>
+
   )
 }
 

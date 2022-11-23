@@ -17,6 +17,7 @@ class BordController extends Controller
      */
     public function index(User $user)
     {
+        // abort(500);
         return Bord::all();
     }
 

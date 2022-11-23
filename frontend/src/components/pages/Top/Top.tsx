@@ -3,6 +3,7 @@ import { Button } from '@mui/material'
 import { Helmet } from 'react-helmet-async'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
 type Bords = {
   id: number
@@ -15,18 +16,16 @@ type Bords = {
 }
 
 const Top = () => {
-  const [bords, setBords] = useState<Bords[]>([])
-  const getBordsData = async () => {
-    //分割代入でdata だけ取り出す
+  const {data:bords,status} = useQuery(['bords'],async ()=>{
     const { data } = await axios.get<Bords[]>(
       'http://localhost:80/api/v1/bords'
     )
-    setBords(data)
-  }
+    return data
+  })
 
-  useEffect(() => {
-    getBordsData()
-  }, [])
+  if (status == "loading") return <div className='loader'></div>
+  else if (status == "error") return <div>データの読み込みに失敗しました</div>
+  else if (!bords || bords.length <= 0) return <div>登録されたボードはありません</div>
 
   return (
     <>
@@ -34,7 +33,7 @@ const Top = () => {
         <title>Top Page</title>
       </Helmet>
       <p>Top Page</p>
-      
+
       {bords.map(bord => {
         return <p key={bord.id}>{bord.title}</p>
       })}

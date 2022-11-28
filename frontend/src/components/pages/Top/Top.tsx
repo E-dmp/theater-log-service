@@ -22,6 +22,9 @@ const Top = () => {
         return <p key={bord.id}>{bord.title}</p>
       })}
 
+      <Button component={RouterLink} to='/login'>
+        ログイン
+      </Button>
       <Button component={RouterLink} to='/*'>
         Not Found Page
       </Button>

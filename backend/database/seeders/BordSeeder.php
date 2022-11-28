@@ -15,7 +15,7 @@ class BordSeeder extends Seeder
      */
     public function run()
     {
-           // 作成する`TaskCard`が属する`User`を事前に作成
+    // 作成する`Bord`が属する`User`を事前に作成
     $user = User::factory()->create();
 
     // 'User'に属するデータを10件生成

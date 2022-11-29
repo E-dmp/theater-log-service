@@ -1,6 +1,12 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
+    https-portal:
+        image: steveltn/https-portal:1 
+        ports:
+            - '4333:443'
+        links:
+            - laravel.test     
     laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.1
@@ -10,9 +16,10 @@ services:
         image: sail-8.1/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
+ 
         ports:
             - '${APP_PORT:-80}:80'
-            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+            # - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1

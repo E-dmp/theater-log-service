@@ -179,7 +179,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\TelescopeServiceProvider::class,
+        // App\Providers\TelescopeServiceProvider::class,
 
     ],
 

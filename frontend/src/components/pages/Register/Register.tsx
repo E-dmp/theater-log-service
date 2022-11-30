@@ -4,8 +4,7 @@ import axios from "axios"
 import { useForm } from "react-hook-form";
 import TextField from '@mui/material/TextField';
 import { LoadingButton } from '@mui/lab';
-
-
+import apiClient from "../../../api/auth/DevApiClient";
 
 const Register = () => {
   const { register, handleSubmit, setError, formState: { errors } } = useForm();
@@ -13,8 +12,8 @@ const Register = () => {
 
   const onSubmit = (data:any) => {
     setLoading(true)
-    axios.get('http://localhost:80/sanctum/csrf-cookie').then(() => {
-      axios.post('http://localhost:80/api/register', data).then(() => {
+    apiClient.get('sanctum/csrf-cookie').then(() => {
+      apiClient.post('/api/register', data).then(() => {
         console.log("OK")
       }).catch(error => {
         console.log(error)

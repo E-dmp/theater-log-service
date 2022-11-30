@@ -1,17 +1,7 @@
 import axios from 'axios'
 import { User } from 'type/User'
+import apiClient from "./DevApiClient";
 
-const apiClient = axios.create({
-  xsrfHeaderName: 'X-CSRF-Token',
-  baseURL: 'http://localhost:80',
-  withCredentials: true,
-  
-  headers: {
-    'Accept': 'application/json',
-    'content-type': 'application/json'
-    
-  }
-});
 
 // ログインしているユーザー情報を取得
 const getUser = async () => {
@@ -22,7 +12,7 @@ const getUser = async () => {
 const login = async ({email,password}:{email:string,password:string}) => {
 
   await apiClient.get('sanctum/csrf-cookie');
-  const {data} = await apiClient.post<User[]>('api/login', { email, password });
+  const {data} = await apiClient.post<User[]>('/api/login', { email, password });
   console.log({data})
   return data
 }
